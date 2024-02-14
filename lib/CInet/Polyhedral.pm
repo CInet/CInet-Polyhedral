@@ -11,18 +11,38 @@ CInet::Polyhedral - Building blocks for polyhedral geometry
 
 =head2 VERSION
 
-This document describes CInet::Polyhedral v0.0.1.
+This document describes CInet::Polyhedral v0.1.0.
 
 =cut
 
 # ABSTRACT: Building blocks for polyhedral geometry
 package CInet::Polyhedral;
 
-our $VERSION = "v0.0.1";
+our $VERSION = "v0.1.0";
 
 =head1 DESCRIPTION
 
-TODO
+This module provides access to software for polyhedral geometry,
+in particular to a linear programming solver. Linear programming is known
+to apply to conditional independence through concepts such as polymatroids
+and structural semigraphoids.
+
+The main object of this module is a L<CInet::Imset>. An I<imset> is an
+B<i>nteger-valued B<m>ultiB<set>. It associates to each subset of a given
+set C<N> an integer number. Studený uses imsets in the theory of conditional
+independence structures to describe information inequalities, that is linear
+inequalities with integer coefficients on the cone on multiinformation
+functions, the faces of which correspond to CI structures. The work of
+Matúš studies dually integer polymatroids, which are abstractions of
+entropies or multiinformation functions, which can also be written as
+imsets. Each imset requires a L<CInet::Cube> domain over which (that
+is over whose vertices) it is defined.
+
+In the future, syntactic sugar similar to L<CInet::Propositional> will
+be provided to write down linear programs for CI purposes clearly and
+quickly. Based on this, objects and methods will be added which expose
+the link between polyhedral geometry and CI implication but also blend
+in with the interface of L<CInet::Base>.
 
 =cut
 

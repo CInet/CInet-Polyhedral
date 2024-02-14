@@ -1,9 +1,29 @@
+=encoding utf8
+
+=head1 NAME
+
+CInet::Cube::Polyhedral - Extend CInet::Cube
+
+=head1 SYNOPSIS
+
+    use CInet::Base;
+    use CInet::Cube::Polyhedral; # extend CInet::Cube
+
+    my $h = Cube(4)->h([1,2]); # unit vector in RR^{2^4}.
+    my $Δ = Cube(4)->ci([1,4], [2,4]); # submodular inequality
+
+=cut
+
+# ABSTRACT: Extend CInet::Cube
 package CInet::Cube::Polyhedral;
+
+use Modern::Perl 2018;
 
 use List::Util qw(uniq);
 use Array::Set qw(set_union set_intersect);
 
 use CInet::Cube;
+use CInet::Imset;
 
 =head1 DESCRIPTION
 
@@ -11,8 +31,6 @@ This class extends L<CInet::Cube> from the L<CInet::Base> package in the
 following way.
 
 =head2 Methods
-
-=cut
 
 =head3 h
 
@@ -70,5 +88,18 @@ sub CInet::Cube::ci {
     }
     $self->h($I) + $self->h($J) - $self->h(set_union($I, $J)) - $self->h(set_intersect($I, $J))
 }
+
+=head1 AUTHOR
+
+Tobias Boege <tobs@taboege.de>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (C) 2020 by Tobias Boege.
+
+This is free software; you can redistribute it and/or
+modify it under the terms of the Artistic License 2.0.
+
+=cut
 
 ":wq"
