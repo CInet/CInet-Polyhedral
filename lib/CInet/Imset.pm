@@ -233,6 +233,19 @@ sub to_string {
     shift->_str
 }
 
+=head3 description
+
+    my $str = $h->description;
+
+Returns a human-readable description of the object.
+
+=cut
+
+sub description {
+    my $self = shift;
+    'Imset ' . "<$self>" . ' over ' . $self->cube->description
+}
+
 =head2 Overloaded operators
 
 =cut
